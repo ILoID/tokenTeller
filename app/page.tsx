@@ -11,7 +11,7 @@ export default function Home() {
 						Welcome to TokenTeller
 					</h1>
 					<p className="text-xl text-muted-foreground">
-						Enter the token address and chain to get started
+						Enter the token chain and address to get started
 					</p>
 				</div>
 
