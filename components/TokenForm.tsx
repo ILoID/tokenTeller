@@ -56,7 +56,7 @@ const TokenForm = () => {
                 setIsDialogOpen(true);
             } else if (data.errorCode) {
                 // Error
-                if (data.errorCode) {
+                if (data.errorCode === 200) {
                     // Bad Address value
                     toast({
                         variant: "destructive",
