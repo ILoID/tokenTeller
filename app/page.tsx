@@ -14,10 +14,8 @@ export default function Home() {
 						Enter the token chain and address to get started
 					</p>
 				</div>
-
 				<TokenForm />
 			</div>
-
 		</main>
 	)
 }

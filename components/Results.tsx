@@ -26,6 +26,7 @@ const Results: React.FC<ResultsProps> = ({
     results,
     chain
 }) => {
+    console.log(results)
     const circulatingPercentage = (results.metrics.circulatingSupply / results.metrics.totalSupply) * 100;
     const formattedDate = new Date(results.audit.date).toLocaleDateString("en-US", {
         year: "numeric",
@@ -70,21 +71,46 @@ const Results: React.FC<ResultsProps> = ({
                                 <CardTitle className="text-3xl">
                                     Info
                                 </CardTitle>
-                                <CardDescription>
+                                <CardDescription className="text-muted-foreground">
                                     General information about the token
                                 </CardDescription>
                             </CardHeader>
                             <Separator className="mb-4" />
                             <CardContent className="flex flex-col space-y-4">
-                                <h3 className="text-xl font-bold">Token Description</h3>
-                                <p className="font-light italic">&quot;{results.info.description}&quot;</p>
-                                <h3 className="text-xl font-bold">Contact Email</h3>
-                                <p>{results.info.email}</p>
-                                    
-                                <p>{results.info.extraInfo}</p>
-                                <p>{results.info.nftCollection}</p>
-                                <p>{results.info.ventures}</p>
-
+                                <div className="flex flex-col space-y-4 p-4 rounded-md bg-muted">
+                                    <div className="flex flex-col space-y-2">
+                                        <h3 className="text-xl font-bold">Token Description</h3>
+                                        <p className="italic">{results.info.description}</p>
+                                    </div>
+                                    <div className="flex flex-col space-y-2">
+                                        <h3 className="text-xl font-bold">Contact Email</h3>
+                                        <p className="">{results.info.email}</p>
+                                    </div>
+                                    <div className="flex flex-col space-y-2">
+                                        <h3 className="text-xl font-bold">Extra Info</h3>
+                                        <p>{results.info.extraInfo ? (
+                                            results.info.extraInfo
+                                        ) : (
+                                            "No extra info provided"
+                                        )}</p>
+                                    </div>
+                                    <div className="flex flex-col space-y-2">
+                                        <h3 className="text-xl font-bold">NFT Collection</h3>
+                                        <p>{results.info.nftCollection ? (
+                                            results.info.nftCollection
+                                        ) : (
+                                            "No NFT's found"
+                                        )}</p>
+                                    </div>
+                                    <div className="flex flex-col space-y-2">
+                                        <h3 className="text-xl font-bold">Ventures</h3>
+                                        <p>{results.info.ventures ? (
+                                            results.info.ventures
+                                        ) : (
+                                            "No ventures found"
+                                        )}</p>
+                                    </div>
+                                </div>
                             </CardContent>
                         </Card>
                     </TabsContent>
@@ -94,7 +120,7 @@ const Results: React.FC<ResultsProps> = ({
                                 <CardTitle className="text-3xl">
                                     Audit
                                 </CardTitle>
-                                <CardDescription>
+                                <CardDescription className="text-muted-foreground">
                                     Detailed audit information about the token
                                 </CardDescription>
                             </CardHeader>
@@ -221,13 +247,18 @@ const Results: React.FC<ResultsProps> = ({
                                 <CardTitle className="text-3xl">
                                     Metrics
                                 </CardTitle>
-                                <CardDescription>
+                                <CardDescription className="text-muted-foreground">
                                     Key metrics about the token
                                 </CardDescription>
                             </CardHeader>
                             <Separator className="mb-4" />
                             <CardContent className="flex flex-col space-y-4">
-                                <div className="flex flex-col space-y-4">
+                                <div className="flex flex-col space-y-4 p-4 rounded-md bg-muted">
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-3xl font-bold">Creation Block:</span>
+                                        <span className="text-2xl">{results.creationBlock.toLocaleString("en-US")}</span>
+                                    </div>
+                                    <Separator />
                                     <div className="flex flex-col">
                                         {results.metrics.circulatingSupply > 0 ? (
                                             <span className="text-3xl font-bold">{results.metrics.circulatingSupply.toLocaleString("en-US")} {results.symbol}</span>
@@ -264,7 +295,7 @@ const Results: React.FC<ResultsProps> = ({
                                 <CardTitle className="text-3xl">
                                     Links
                                 </CardTitle>
-                                <CardDescription>
+                                <CardDescription className="text-muted-foreground">
                                     Links to the token&apos;s website and social media
                                 </CardDescription>
                             </CardHeader>
