@@ -85,7 +85,7 @@ const TokenForm = () => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-8 px-16 w-[500px]">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-8 px-6 sm:px-8 md:px-12 w-full max-w-xl mx-auto">
                 <FormField
                     control={form.control}
                     name="chain"

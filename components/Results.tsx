@@ -26,7 +26,6 @@ const Results: React.FC<ResultsProps> = ({
     results,
     chain
 }) => {
-    console.log(results)
     const circulatingPercentage = (results.metrics.circulatingSupply / results.metrics.totalSupply) * 100;
     const formattedDate = new Date(results.audit.date).toLocaleDateString("en-US", {
         year: "numeric",
@@ -38,15 +37,15 @@ const Results: React.FC<ResultsProps> = ({
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="h-[90%] overflow-y-auto flex flex-col">
                 <DialogHeader>
-                    <DialogTitle className="flex items-center text-4xl">
+                    <DialogTitle className="flex items-center justify-between text-4xl">
                         {results.name}
-                        <span className="ml-4 font-light text-3xl">
-                            ({results.symbol})
+                        <span className="ml-4 font-light text-4xl mr-8">
+                            ( {results.symbol} )
                         </span>
                     </DialogTitle>
                     <DialogDescription className="flex items-center">
                         <Image src={chain.logo} alt="default.svg" width={10} height={10} className="mr-2" />
-                        {chain.name}
+                        {chain.name} chain
                     </DialogDescription>
                 </DialogHeader>
                 <Tabs defaultValue="info">
@@ -327,13 +326,3 @@ const Results: React.FC<ResultsProps> = ({
 };
 
 export default Results;
-
-// TODO:
-// - Add a way to save the results as a PDF
-// - Add a way to copy the results to the clipboard
-// - Add a way to share the results
-// - Add a way to download the results as a JSON file
-// - Data:
-//    - results.logo
-//    - results.info.decimals
-//    - results.info.chain
